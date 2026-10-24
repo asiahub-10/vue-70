@@ -1,11 +1,16 @@
 <script setup lang="ts">
-import Condition from './components/Condition.vue';
-import Loop from './components/Loop.vue';
+import { RouterLink, RouterView } from 'vue-router';
 
 </script>
 
 <template>
-  <Loop />
+  <nav>
+    <RouterLink to="/">Form</RouterLink>
+    <span> | </span>
+    <RouterLink to="/about">About</RouterLink>
+  </nav>
+  <!-- <RouterView /> -->
+   <router-view />
 </template>
 
 <style scoped>
