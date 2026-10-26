@@ -1,0 +1,495 @@
+{
+  "info": {
+    "_postman_id": "c2ad52a7-001e-4596-afb7-3f38d8aa5aa2",
+    "name": "Lara Project API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57427848",
+    "_collection_link": "https://go.postman.co/collection/57427848-c2ad52a7-001e-4596-afb7-3f38d8aa5aa2?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "index",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{lara_api}}users",
+              "host": [
+                "{{lara_api}}users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "store",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Lali",
+                  "type": "text"
+                },
+                {
+                  "key": "email",
+                  "value": "new@mail.co",
+                  "type": "text"
+                },
+                {
+                  "key": "role_id",
+                  "value": "7",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "123",
+                  "type": "text"
+                },
+                {
+                  "key": "password_confirmation",
+                  "value": "123",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{lara_api}}users",
+              "host": [
+                "{{lara_api}}users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "show",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{lara_api}}users/20",
+              "host": [
+                "{{lara_api}}users"
+              ],
+              "path": [
+                "20"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Lali2",
+                  "type": "text"
+                },
+                {
+                  "key": "email",
+                  "value": "lali0@mail.com",
+                  "type": "text"
+                },
+                {
+                  "key": "role_id",
+                  "value": "3",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{lara_api}}users/14",
+              "host": [
+                "{{lara_api}}users"
+              ],
+              "path": [
+                "14"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "destroy",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{lara_api}}users/14",
+              "host": [
+                "{{lara_api}}users"
+              ],
+              "path": [
+                "14"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "role",
+      "item": [
+        {
+          "name": "index",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Lali2",
+                  "type": "text"
+                },
+                {
+                  "key": "email",
+                  "value": "lali0@mail.com",
+                  "type": "text"
+                },
+                {
+                  "key": "role_id",
+                  "value": "3",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{lara_api}}roles",
+              "host": [
+                "{{lara_api}}roles"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Faysal",
+                  "type": "text"
+                },
+                {
+                  "key": "email",
+                  "value": "faysal@mail.com",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "123",
+                  "type": "text"
+                },
+                {
+                  "key": "password_confirmation",
+                  "value": "123",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{lara_api}}register",
+              "host": [
+                "{{lara_api}}register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "new@mail.co",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "1234",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{lara_api}}login",
+              "host": [
+                "{{lara_api}}login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "logout",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "12|XNpgLW8O8q9FXYZIlB8wLwPQRcClXQ8nfDXABarJ7485f88a",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{lara_api}}logout",
+              "host": [
+                "{{lara_api}}logout"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "check-token",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "22|M6D89jW4LZpSOLpspcO2mEO89hjksk9qopQ84xDe5c4ae612",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{lara_api}}check-token",
+              "host": [
+                "{{lara_api}}check-token"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "test",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "123456",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"asia@mail\",\r\n    \"password\": \"123\"\r\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{lara_api}}test",
+              "host": [
+                "{{lara_api}}test"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "product",
+      "item": [
+        {
+          "name": "index",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{lara_api}}products",
+              "host": [
+                "{{lara_api}}products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "store",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "New Product Name",
+                  "type": "text"
+                },
+                {
+                  "key": "price",
+                  "value": "10000",
+                  "type": "text"
+                },
+                {
+                  "key": "quantity",
+                  "value": "10",
+                  "type": "text"
+                },
+                {
+                  "key": "reorder_level",
+                  "value": "5",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "New product description",
+                  "type": "text"
+                },
+                {
+                  "key": "category_id",
+                  "value": "1",
+                  "type": "text"
+                },
+                {
+                  "key": "brand_id",
+                  "value": "1",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{lara_api}}products",
+              "host": [
+                "{{lara_api}}products"
+              ]
+            },
+            "description": "Generated from cURL: curl -X POST \"{{lara_api}}products\" --form \"name=Product Name\" --form \"price=10000\""
+          },
+          "response": []
+        },
+        {
+          "name": "show",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{lara_api}}products/1",
+              "host": [
+                "{{lara_api}}products"
+              ],
+              "path": [
+                "1"
+              ]
+            },
+            "description": "Generated from cURL: curl -X GET \"{{lara_api}}products/1\""
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Updated Product",
+                  "type": "text"
+                },
+                {
+                  "key": "price",
+                  "value": "20000",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{lara_api}}products/1",
+              "host": [
+                "{{lara_api}}products"
+              ],
+              "path": [
+                "1"
+              ]
+            },
+            "description": "Generated from cURL: curl -X PUT \"{{lara_api}}products/1\" --form \"name=Updated Product\" --form \"price=20000\""
+          },
+          "response": []
+        },
+        {
+          "name": "destroy",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{lara_api}}products/1",
+              "host": [
+                "{{lara_api}}products"
+              ],
+              "path": [
+                "1"
+              ]
+            },
+            "description": "Generated from cURL: curl -X DELETE \"{{lara_api}}products/1\""
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
