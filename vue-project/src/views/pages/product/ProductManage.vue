@@ -1,23 +1,27 @@
 <script setup lang="ts">
 import PageHead from '@/components/PageHead.vue';
 import { api, baseUrl } from '@/api.ts';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { type Product } from '@/interfaces/Product';
 
 let products = ref<Product[]>([]);
+let pageLinks = ref<any[]>([]);
 // console.log(products);
-function getAllProducts() {
-    api.get('products')
+function getAllProducts(url: string) {
+    api.get(url)
         .then((res: any) => {
-            // console.log(res.data.products.data);
+            // console.log(res.data.products);
             products.value = res.data.products.data;
-            // console.log(products);
+            pageLinks.value = res.data.products.links;
+            // console.log(links);
         })
         .catch((err: any) => {
             console.log(err.response.data);
         });
 }
-getAllProducts();
+onMounted(() => {
+    getAllProducts('products');
+});
 </script>
 
 <template>
@@ -29,10 +33,6 @@ getAllProducts();
     <section class="section-gap">
         <div class="card">
             <div class="card-body">
-                <div class="table-head">
-                    <h5 class="card-title">Recent orders</h5>
-                    <span class="muted small">5 orders</span>
-                </div>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -50,8 +50,10 @@ getAllProducts();
                                 <td>{{ item.id }}</td>
                                 <td>
                                     <div class="d-flex align-items-center gap-3">
-                                        <img v-if="item.image" :src="`${baseUrl}${item.image}`" width="40" height="40" class="rounded" :alt="item.name" />
-                                        <img v-else src="https://placehold.co/40" width="40" height="40" class="rounded" :alt="item.name" />
+                                        <img v-if="item.image" :src="`${baseUrl}${item.image}`" width="40" height="40"
+                                            class="rounded" :alt="item.name" />
+                                        <img v-else src="https://placehold.co/40" width="40" height="40" class="rounded"
+                                            :alt="item.name" />
                                         {{ item.name }}
                                     </div>
                                 </td>
@@ -78,6 +80,21 @@ getAllProducts();
                                 </td>
                             </tr>
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6">
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination pagination-sm theme-accent justify-content-end mb-0">
+                                            <li v-for="link in pageLinks" class="page-item" :class="link.active ? 'active' : ''">
+                                                <button type="button" class="page-link" :class="link.page == null ? 'disabled' : ''" @click="getAllProducts(link.url)">
+                                                    <span v-html="link.label"></span>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
