@@ -5,9 +5,9 @@ export interface Product {
     quantity: number;
     image?: File | null | string;
     category_id: number;
-    category: string;
+    category: any;
     brand_id: number;
-    brand: string;
+    brand: any;
     description?: string;
     reorder_level?: number;
     active: boolean;

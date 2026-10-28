@@ -1,25 +1,60 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import PageHead from '../../../components/PageHead.vue';
 import { defaultProduct } from '@/interfaces/Product.ts';
 import type { Brand } from '@/interfaces/Brand.ts';
 import type { Category } from '@/interfaces/Category.ts';
 import { api } from '@/api.ts';
+import { useRouter } from 'vue-router';
 
+const route = useRouter();
 let product = ref(defaultProduct);
 let brands = ref<Brand[]>([]);
 let categories = ref<Category[]>([]);
-
+function getAllBrands() {
+  api.get('brands')
+    .then((res: any) => {
+      // console.log(res.data);
+      brands.value = res.data.brands;
+    })
+    .catch((err: any) => {
+      console.log(err.response.data);
+    });
+}
+function getAllCategories() {
+  api.get('categories')
+    .then((res: any) => {
+      categories.value = res.data.categories;
+    })
+    .catch((err: any) => {
+      console.log(err.response.data);
+    });
+}
+onMounted(() => {
+  getAllBrands();
+  getAllCategories();
+})
 const handleSubmit = () => {
   // console.log(product.value);
   let formData = new FormData();
-  // data.append('name', product.value.name);
-  // data.append('category_id', product.value.category_id.toString());
+  formData.append('name', product.value.name);
+  formData.append('category_id', product.value.category_id.toString());
+  formData.append('brand_id', product.value.brand_id.toString());
+  formData.append('price', product.value.price.toString());
+  formData.append('quantity', product.value.quantity.toString());
+  if (product.value.reorder_level) formData.append('reorder_level', product.value.reorder_level.toString());
+  formData.append('description', product.value.description ? product.value.description : '');
+  formData.append('active', product.value.active.toString());
   if (product.value.image) formData.append('image', product.value.image);
 
-  api.post('products', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+  api.post('products', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  })
     .then((res: any) => {
-      console.log(res.data);
+      // console.log(res.data);
+      route.push('/products');
     })
     .catch((err: any) => {
       console.log(err.response.data);
@@ -52,6 +87,7 @@ function handleImage(event: any) {
                 <label class="form-label">Category</label>
                 <select class="form-control" v-model="product.category_id">
                   <option selected disabled>Select category...</option>
+                  <option v-for="item in categories" :key="item.id" :value="item.id">{{ item.name }}</option>
                 </select>
               </div>
             </div>
@@ -60,6 +96,7 @@ function handleImage(event: any) {
                 <label class="form-label">Brand</label>
                 <select class="form-control" v-model="product.brand_id">
                   <option selected disabled>Select brand...</option>
+                  <option v-for="item in brands" :key="item.id" :value="item.id">{{ item.name }}</option>
                 </select>
               </div>
             </div>
