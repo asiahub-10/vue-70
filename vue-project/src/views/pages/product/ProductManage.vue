@@ -19,6 +19,15 @@ function getAllProducts(url: string) {
             console.log(err.response.data);
         });
 }
+function handleDelete(id: number) {
+    api.delete(`products/${id}`)
+        .then((res: any) => {
+            getAllProducts('products');
+        })
+        .catch((err: any) => {
+            console.log(err.response.data);
+        });
+}
 onMounted(() => {
     getAllProducts('products');
 });
@@ -70,10 +79,10 @@ onMounted(() => {
                                         <RouterLink :to="`/products/${item.id}`" class="btn-outline theme-secondary">
                                             <i class="bi bi-eye"></i>
                                         </RouterLink>
-                                        <RouterLink to="/products/update" class="btn-outline theme-secondary">
+                                        <RouterLink :to="`/products/update/${item.id}`" class="btn-outline theme-secondary">
                                             <i class="bi bi-pencil"></i>
                                         </RouterLink>
-                                        <button type="button" class="btn-outline theme-secondary">
+                                        <button type="button" @click="handleDelete(item.id)" class="btn-outline theme-secondary">
                                             <i class="bi bi-trash"></i>
                                         </button>
                                     </div>

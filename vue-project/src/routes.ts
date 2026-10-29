@@ -4,8 +4,8 @@ import ProductManage from "./views/pages/product/ProductManage.vue"
 import UserManage from "./views/pages/user/UserManage.vue"
 import HelloWorld from "./components/HelloWorld.vue";
 import ProductCreate from "./views/pages/product/ProductCreate.vue";
-import ProductUpdate from "./views/pages/product/ProductUpdate.vue";
 import ProductDetails from "./views/pages/product/ProductDetails.vue";
+import ProductEdit from "./views/pages/product/ProductEdit.vue";
 
 const routes = [
     { path: '/', component: Dashboard },
@@ -14,7 +14,7 @@ const routes = [
     { path: '/products', component: ProductManage },
     { path: '/products/create', component: ProductCreate },
     { path: '/products/:id', component: ProductDetails },
-    { path: '/products/update', component: ProductUpdate },
+    { path: '/products/update/:id', component: ProductEdit },
 ];
 
 export const router = createRouter({
