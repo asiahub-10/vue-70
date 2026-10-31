@@ -12,6 +12,8 @@ const route = useRoute();
             <RouterLink class="side-link" active-class="active" to="/"><i class="bi bi-speedometer2"></i> Dashboard</RouterLink>
             <RouterLink class="side-link" :class="{ active: route.path.startsWith('/users') }" to="/users"><i class="bi bi-people"></i> Users</RouterLink>
             <RouterLink class="side-link" :class="{ active: route.path.startsWith('/products') }" to="/products"><i class="bi bi-box"></i> Products</RouterLink>
+            <RouterLink class="side-link" active-class="active" to="/count"><i class="bi bi-circle"></i> Count</RouterLink>
+            <RouterLink class="side-link" active-class="active" to="/update-id"><i class="bi bi-circle"></i> Update ID</RouterLink>
         </nav>
     </aside>
 
@@ -25,6 +27,8 @@ const route = useRoute();
             <RouterLink class="side-link" active-class="active" to="/"><i class="bi bi-speedometer2"></i> Dashboard</RouterLink>
             <RouterLink class="side-link" :class="{ active: route.path.startsWith('/users') }" to="/users"><i class="bi bi-people"></i> Users</RouterLink>
             <RouterLink class="side-link" :class="{ active: route.path.startsWith('/products') }" to="/products"><i class="bi bi-box"></i> Products</RouterLink>
+            <RouterLink class="side-link" active-class="active" to="/count"><i class="bi bi-circle"></i> Count</RouterLink>
+            <RouterLink class="side-link" active-class="active" to="/update-id"><i class="bi bi-circle"></i> Update ID</RouterLink>
         </div>
     </dialog>
 </template>
